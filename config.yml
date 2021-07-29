@@ -1,0 +1,752 @@
+########################################
+#                                      #
+#            COREBOT CONFIG            #
+#                                      #
+########################################
+
+Token: "BOT TOKEN HERE"
+Prefix: "-"
+
+########################################
+#                                      #
+#             EMBED COLORS             #
+#                                      #
+########################################
+
+EmbedColors:
+    Default: "#0390fc"
+    Error: "#f52c2c"
+    Success: "#25de1f"
+
+########################################
+#                                      #
+#               DATABASE               #
+#                                      #
+########################################
+
+Storage:
+    Type: "sqlite"
+
+    MySQL:
+        Host: ""
+        Port: ""
+        Database: ""
+        User: ""
+        Password: ""
+
+########################################
+#                                      #
+#              JOIN EVENT              #
+#                                      #
+########################################
+
+Join:
+    Roles:
+        - "😬》Member"
+
+    Messages:
+        Enabled: true
+        Channel: "🤚》entrance"
+        DM:
+            Enabled: false
+
+    InviteRewards:
+        Enabled: true
+        Roles:
+            1: "1 invite"
+            5: "5 invites"
+            10: "10 invites"
+            15: "15 invites"
+            20: "20 invites"
+
+########################################
+#                                      #
+#             LEAVE EVENT              #
+#                                      #
+########################################
+
+Leave:
+    Messages:
+        Enabled: true
+        Channel: "🚪》exit"
+
+    Data:
+        # true - data will be kept
+        # false - data will be deleted
+        Coins: true
+        Levels: true
+        Punishments: true
+        Roles: true
+
+########################################
+#                                      #
+#              COINS MODULE            #
+#                                      #
+########################################
+
+Coins:
+    Amounts:
+        PerMessage: 10
+        Daily: 1000
+        MaxGamble: 100000000000000000000000000000000000000000000
+
+    Work:
+        Cooldown: 12
+        Jobs:
+            - Name: "McDonalds"
+              DisplayName: "🍔 McDonalds"
+              Tiers:
+                  - Name: "Janitor"
+                    HourlyPay: 15
+                    Requirements: false
+                  - Name: "Cashier"
+                    HourlyPay: 20
+                    Requirements:
+                        TimesWorked: 4
+                        Level: 3
+                  - Name: "Cook"
+                    HourlyPay: 27
+                    Requirements:
+                        TimesWorked: 8
+                        Coins: 4000
+                  - Name: "Manager"
+                    HourlyPay: 34
+                    Requirements:
+                        TimesWorked: 12
+            - Name: "Starbucks"
+              DisplayName: "🍵 Starbucks"
+              Tiers:
+                  - Name: "Cashier"
+                    HourlyPay: 17
+                    Requirements: false
+                  - Name: "Barista"
+                    HourlyPay: 25
+                    Requirements:
+                        TimesWorked: 5
+                  - Name: "Manager"
+                    HourlyPay: 35
+                    Requirements:
+                        TimesWorked: 10
+            - Name: "YouTuber"
+              DisplayName: "📹 YouTuber"
+              Tiers:
+                  - Name: "1k Subs YouTuber"
+                    HourlyPay: 13
+                    Requirements: false
+                  - Name: "10k Subs YouTuber"
+                    HourlyPay: 30
+                    Requirements:
+                        Level: 5
+                        TimesWorked: 7
+                  - Name: "100k Subs YouTuber"
+                    HourlyPay: 70
+                    Requirements:
+                        Level: 5
+                        TimesWorked: 12
+            - Name: "Doctor"
+              DisplayName: "👨‍⚕️ Doctor"
+              Tiers:
+                  - Name: "Nursing Assistant"
+                    HourlyPay: 30
+                    Requirements:
+                        Level: 5
+                        TimesWorked: 5
+                  - Name: "Nurse"
+                    HourlyPay: 45
+                    Requirements:
+                        Level: 7
+                        TimesWorked: 10
+                  - Name: "Doctor"
+                    HourlyPay: 80
+                    Requirements:
+                        Level: 10
+                        TimesWorked: 15
+
+    Shop:
+        Enabled: true
+        Items:
+            - Name: "vip"
+              Display: "VIP RANK"
+              Role: "VIP"
+              Price: 3500
+              Description: "Cost: **3500** coins\nMultiplier: 2x\nPurchase by running the command `-buy vip`"
+            - Name: "mvp"
+              Display: "MVP RANK"
+              Role: "MVP"
+              Price: 5000
+              Description: "Cost: **5000** coins\nMultiplier: 2.5x\nPurchase by running the command `-buy mvp`"
+              Requirements:
+                  Role: "VIP"
+            - Name: "mvp+"
+              Display: "MVP+ RANK"
+              Role: "MVP+"
+              Price: 7000
+              Description: "Cost: **7000** coins\nMultiplier: 3x\nPurchase by running the command `-buy mvp+`"
+              Requirements:
+                  Role: "MVP"
+                  Level: 5
+        ItemsPerPage: 5
+
+    Multipliers:
+        Enabled: false
+        Roles:
+            "😬》Elite": 2
+            "😬》Oracle": 2.5
+            "😬》Emperor": 3
+            "😬》Devine": 3.5
+            "😬》Immortal": 4
+            "😬》God": 4.5
+        Multiplies:
+            Daily: true
+            Work: true
+            PerMessage: true
+            Connect4: true
+            Tictactoe: true
+            Slots: true
+
+    Slots:
+        ":lemon:":
+            Chance: 35
+            Coins: 0.023
+        ":skull:":
+            Chance: 5
+            Coins: 0.92
+        ":heart:":
+            Chance: 35
+            Coins: 0.023
+        ":large_blue_diamond:":
+            Chance: 25
+            Coins: 0.21
+
+########################################
+#                                      #
+#            LEVEL/XP MODULE           #
+#                                      #
+########################################
+
+Levels:
+    Amounts:
+        PerMessage: 10
+
+    LevelUp:
+        Notification: true
+        Channel: "current"
+        Delete: true
+
+    LevelRoles:
+        Enabled: true
+        RemovePrevious: false
+        LevelsToRoles:
+            5: "Level 5"
+            10: "Level 10"
+            15: "Level 15"
+            20: "Level 20"
+
+    BlacklistedChannels:
+        - "staff-chat"
+
+########################################
+#                                      #
+#            TICKETS MODULE            #
+#                                      #
+########################################
+
+Tickets:
+    LimitPerUser: 2
+    RequireReason: false
+    PingSupport: true
+    PingUser: true
+    DMClosureReason: false
+    CloseConfirmation: false
+    CloseAllConfirmation: true
+    CreationChannel: false
+    SupportRole: "🕍》staff"
+
+    Channel:
+        Category: "🎟》TICKETS"
+        Topic: "**User** {user-tag} **Reason** {reason} **Time** {time} **ID** {id}"
+
+    Logs:
+        Enabled: true
+        Channel: "👨💻》logs"
+
+    Transcripts:
+        Enabled: true
+        Channel: "👨💻》logs"
+        DMToUser: true
+
+########################################
+#                                      #
+#         ADVERTISEMENT SYSTEM         #
+#                                      #
+########################################
+
+AntiAdvertisement:
+    Chat:
+        Enabled: true
+        Logs:
+            Enabled: true
+            Channel: "👨💻》logs"
+
+    Status:
+        Enabled: false
+        Channel: "👨💻》logs"
+
+    Whitelist:
+        Websites:
+            - "google.com"
+            - "youtube.com"
+        Channels:
+            - "🚸》self-promo"
+
+    BypassRole: "AdvertiseBypass"
+
+########################################
+#                                      #
+#         VERIFICATION SYSTEM          #
+#                                      #
+########################################
+
+Verification:
+    Enabled: false
+
+    VerifiedRoles:
+        - "Member"
+
+    Type: "reaction"
+    # "reaction" or "code"
+
+    WelcomeMessage: "after-verified"
+    # "on-join" or "after-verified"
+
+    Reaction:
+        Emoji: "✅"
+        MessageID: "PUT-MESSAGE-ID-HERE"
+
+    Code:
+        Length: 10
+        Channel: "verify"
+
+########################################
+#                                      #
+#         AUTO RESPONSE SYSTEM         #
+#                                      #
+########################################
+
+AutoResponse:
+    Enabled: true
+    Responses:
+        - Text: "Test auto response"
+          Content: "This is a response!"
+
+        - Text: "Auto response #2!"
+          DM: true
+          Type: "text"
+          Content: "This is a DM auto response"
+          AfterDM:
+              Fail: "Your DMs are locked."
+              Success: "A message has been sent to your DMs!"
+
+        - Text: "-disabled-command"
+          Delete: true
+          DeleteResponse: 2
+          Type: "embed"
+          Embed:
+              Title: "Command Disabled"
+              Description: "Sorry, this command is disabled"
+              Thumbnail: "{bot-pfp}"
+
+########################################
+#                                      #
+#          TEMP CHANNEL SYSTEM         #
+#                                      #
+########################################
+
+TempChannels:
+    Enabled: true
+    VoiceChannel: "Temp Channel"
+    Category: "Temp Channels"
+
+########################################
+#                                      #
+#          SUGGESTIONS SYSTEM          #
+#                                      #
+########################################
+
+Suggestions:
+    Enabled: true
+    ReactToOwnSuggestion: false
+    ManageSuggestionsRole: "Owner"
+    Type: "send-command"
+    # Types: "send-command", "send-message", "both"
+
+    Emojis:
+        Upvote: "✅"
+        Downvote: "❌"
+        Accept: "⭐"
+        Deny: "🔒"
+        Reset: "⚫"
+        Implemented: "🛠️"
+
+    Channels:
+        Suggestions: "💡》suggestions"
+        Accepted: "💡》suggestions"
+        Denied: "💡》suggestions"
+        Implemented: "💡》suggestions"
+
+    Colors:
+        Pending: "#0390fcTE"
+        Accepted: "#fc9803"
+        Denied: "#f52c2c"
+        Implemented: "#25de1f"
+
+    Notes:
+        Account:
+            Username: "{user-displayname}"
+            Avatar: "{user-pfp}"
+
+        Message:
+            Type: "text"
+            # Types: "text" or "embed"
+
+            Text: "{note}"
+            # Only works if type is "text"
+
+            Embed: # Only works if type is "embed"
+                Title: "Suggestion Note"
+                Description: "{note}\n\n> **Note By:** {user-mention}"
+                Timestamp: true
+                Color: "#8d83fc"
+
+########################################
+#                                      #
+#          BUG REPORTS SYSTEM          #
+#                                      #
+########################################
+
+BugReports:
+    Enabled: true
+    ManageBugReportsRole: "Owner"
+    Type: "send-command"
+    # Types: "send-command", "send-message", "both"
+
+    Emojis:
+        Accept: "✅"
+        Deny: "❌"
+        Fixed: "🛠️"
+        Reset: "⚫"
+
+    Channels:
+        Pending: "bug-reports"
+        Accepted: "bug-reports"
+        Denied: "bug-reports"
+        Fixed: "bug-reports"
+
+    Colors:
+        Pending: "#fc9803"
+        Accepted: "#fc9803"
+        Denied: "#f52c2c"
+        Fixed: "#25de1f"
+
+########################################
+#                                      #
+#        APPLICATION SYSTEM            #
+#                                      #
+########################################
+
+Applications:
+    ReviewerRole: "Admin"
+    MentionReviewerRole: false
+    AddRoleWhenAccepted: true
+    DeleteEmbedsAndSendAnswers: true
+    DMDecision: true
+
+    Channel:
+        Format: "application-{tag}"
+        Topic: "**User:** {user-tag}\n**User ID:** {user-id}\n**Applying for:** {position}\n**Status:** {status}"
+        Category: "Applications"
+
+    Logs:
+        Enabled: true
+        Channel: "👨💻》logs"
+        PasteSite: "https://hastebin.com"
+
+    Transcripts:
+        Enabled: true
+        Channel: "transcripts"
+        DMToUser: true
+
+    Positions:
+        Support:
+            Role: "Support Team"
+            Questions:
+                - "What is your name?"
+                - Question: "What is your age?"
+                  RegExp: '\d+'
+                  FailedRegExp: "That is not a valid age."
+                - Question: "What is your age range?"
+                  Options:
+                      - "10-14"
+                      - "15-18"
+                      - "20-25"
+                - "Do you have any experience with support?"
+
+########################################
+#                                      #
+#          MODERATION MODULE           #
+#                                      #
+########################################
+
+Moderation:
+    AreStaffPunishable: false
+    MuteRole: "Muted"
+
+    Logs:
+        Enabled: true
+        Channel: "👨💻》logs"
+
+    AutoWarnPunishments:
+        3: [tempmute, Auto Punish, 10m]
+        5: [tempban, Auto Punish, 3d]
+        8: [ban, Auto Punish]
+        # (warn count): [punishment type, reason, length (required for tempmute and tempban)]
+
+########################################
+#                                      #
+#      AUTO ANNOUNCEMENTS SYSTEM       #
+#                                      #
+########################################
+
+AutoAnnouncements:
+    Enabled: false
+    Announcements:
+        - Channel: "minecraft"
+          Interval: 10 # in seconds
+          Type: "embed" # or "text"
+          Embed:
+              Title: "Join our Minecraft server! The IP is play.example.com"
+        - Channel: "general"
+          Interval: 5
+          Type: "text"
+          Content: "Hello server!"
+
+########################################
+#                                      #
+#       ACTIVITY CYCLING SYSTEM        #
+#                                      #
+########################################
+
+ActivityCycling:
+    Enabled: true
+    Activities:
+        - ["playing", "KaosMC | +help | Server IP: KaosMC.tk |"]
+        - ["playing", "KaosMC | +help | Website: KaosMC.ga |"]
+        - ["playing", "KaosMC | +help | Store: KaosMC.ga/store |"]
+        - ["playing", "KaosMC | +help | Discord: KaosMC.ga/discord |"]
+    Time: 5
+    Type: "ordered"
+    # Types: "ordered" or "random"
+
+########################################
+#                                      #
+#            LOGGING SYSTEM            #
+#                                      #
+########################################
+
+Logs:
+    Enabled:
+        - "MessageEdited"
+        - "MessageDeleted"
+        - "MessagesDeleted"
+        - "Chat"
+        - "GuildMemberUpdated"
+        - "ChannelCreated"
+        - "ChannelDeleted"
+        - "ChannelPinsUpdated"
+        - "DMs"
+        - "ChannelUpdated"
+        - "EmojiCreated"
+        - "EmojiDeleted"
+        - "EmojiUpdated"
+        - "RoleCreated"
+        - "RoleDeleted"
+        - "RoleUpdated"
+        # - "Commands"
+
+    Channels:
+        MessageEdit: "👨💻》logs"
+        MessageDelete: "👨💻》logs"
+        MessageDeleteBulk: "👨💻》logs"
+        GuildMemberUpdated: "👨💻》logs"
+        Commands: "👨💻》logs"
+        ChannelCreated: "👨💻》logs"
+        ChannelDeleted: "👨💻》logs"
+        ChannelUpdated: "👨💻》logs"
+        ChannelPinsUpdated: "👨💻》logs"
+        EmojiCreated: "👨💻》logs"
+        EmojiDeleted: "👨💻》logs"
+        EmojiUpdated: "👨💻》logs"
+        RoleCreated: "👨💻》logs"
+        RoleDeleted: "👨💻》logs"
+        RoleUpdated: "👨💻》logs"
+        DMs: "👨💻》logs"
+
+    ChannelUpdateBlacklist:
+        - "All Members:"
+        - "Members:"
+        - "Bots:"
+        - "Status:"
+        - "Online:"
+        - "IP:"
+        - "Humans:"
+
+########################################
+#                                      #
+#        SERVER STATUS COMMAND         #
+#                                      #
+########################################
+
+Servers:
+    KaosMC:
+        bungee: true
+        PingURL: "https://api.minetools.eu/ping/kaosmc.tk/25565"
+        QueryURL: "https://api.minetools.eu/query/kaosmc.tk/25565"
+
+########################################
+#                                      #
+#         LOCK/UNLOCK COMMAND          #
+#                                      #
+########################################
+
+LockUnlock:
+    Whitelisted:
+        - "🕍》staff"
+        - "😬》God"
+        - "😬》Immortal"
+        - "😬》Devine"
+        - "😬》Emperor"
+        - "😬》Oracle"
+        - "😬》Elite"
+        - "Server Booster"
+        - "YouTuber"
+    Ignore:
+        - "Muted"
+        - "Bot"
+        - "Unverified"
+
+########################################
+#                                      #
+#             LINKS COMMAND            #
+#                                      #
+########################################
+
+Links:
+    Website: "KaosMC.ga"
+    Store: "KaosMC.ga/store"
+    Twitter: "soon!"
+
+########################################
+#                                      #
+#   REACTION ROLES/ROLE MENU COMMAND   #
+#                                      #
+########################################
+
+ReactionRoles:
+    - Name: "pings"
+      OnlyOne: false
+      EmojisToRoles:
+          "🇺": "Updates"
+          "🇵": "Polls"
+          "🇪": "Events"
+          "🎉": "Giveaways"
+      Embed:
+          Title: "Reaction Roles - Ping Roles"
+          Description: "The corresponding role will be pinged whenever an update, poll, event, or giveaway is made. If you like to be notified when one of these things occur, please react with the following emojis to get the corresponding roles:\n\n{emojiroles}"
+    - Name: "favoritegame"
+      OnlyOne: true
+      EmojisToRoles:
+          "🇺": "Fortnite"
+          "🇵": "Minecraft"
+      Embed:
+          Title: "Reaction Roles - Favorite Game"
+          Description: "Which game is your favorite? \n\n{emojiroles}"
+
+########################################
+#                                      #
+#              LEADERBOARDS            #
+#                                      #
+########################################
+
+Leaderboards:
+    UsersPerPage:
+        Coins: 15
+        Levels: 15
+        Invites: 15
+    FilterUnknown: true
+
+########################################
+#                                      #
+#              COMMANDS                #
+#                                      #
+########################################
+
+Commands:
+    RemoveCommandMessages: false
+    RequireCommandsChannel: false
+    AllowCommandsInTickets: true
+    AllowedChannels:
+        - bot-commands
+    ChannelBypassRole: "Staff"
+    GainXP: true
+    GainCoins: true
+    InvalidCommandMessage: false
+
+########################################
+#                                      #
+#              COOLDOWNS               #
+#                                      #
+########################################
+
+Cooldowns:
+    BypassRole: "Staff"
+
+    # All cooldowns are in seconds.
+    Experience: 5
+    Coins: 5
+
+    Commands:
+        report: 120
+        # (Command Name): (Cooldown Time)
+
+########################################
+#                                      #
+#              CHANNELS                #
+#                                      #
+########################################
+
+Channels:
+    Reports: "👨💻》logs"
+    DefaultVote: ""
+    DefaultUpdates: ""
+    DefaultAnnouncements: "📣》announcements"
+
+########################################
+#                                      #
+#                OTHER                 #
+#                                      #
+########################################
+
+Other:
+    HelpMenu: "categorized"
+    # Types: "normal", "categorized", "dm"
+    MissingRolesAndChannelsNotification: false
+    PostUpdatesByMessagingInChannel: true
+    PasteSite: "https://hastebin.com"
+    FilterBypassRole: "Staff"
+    SQLiteDatabaseBackups: true
+    Giveaways:
+        DiscordEmoji: ":tada:"
+        UnicodeEmoji: "🎉"
+
+# Do not change this unless told to do so by a Corebot staff member.
+BotVersion: "4.4.4"
